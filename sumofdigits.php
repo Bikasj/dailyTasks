@@ -10,11 +10,22 @@ if(isset($_POST['submit']))
 $num=$_POST['num'];
 $r=0;
 $rem=0;
+if($num>=0)
+{
 while($num>0)
 {
 	$rem=$num%10;
 	$r=$r+$rem;
-	$num=$num/10;
+	$num=$num/10;	
+}}
+else
+{
+	while($num!="-")
+{
+	$rem=$num%10;
+	$r=$r+$rem;
+	$num=$num/10;	
+}
 }
 echo "Sum of digits is :".$r;
 }

@@ -15,9 +15,15 @@ else
 	while($num!=$res) 
 	{	$n++;
 		$res=$n*$n;
-		
+		//$flag=1;
 	}
 	echo "Square root of number ".$num." is :".$n;
+	/*if($flag==1)
+	{
+		echo "Sorry,it does not have a perfect square root.";
+	}
+*/
+	
 }
 }
 
