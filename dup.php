@@ -1,0 +1,31 @@
+<?php
+$str="attention";
+$n=strlen($str);
+//echo $n;
+$flag=0;
+$b;
+$k=0;
+for($i=0;$i<$n;$i++)
+{
+$c=$str[$i];
+	for($j=$i;$j<$n;$j++)
+	{
+	if($c==$str[$j])
+		{
+		$flag=1;
+		break;
+		}
+		else
+		{
+		$flag=0;
+		$b[$k++]=$c;
+		break;
+		}}}
+if($flag==0)
+{
+for($m=0;$m<$n;$m++)
+{
+echo $b[$m];
+}
+}
+?>
