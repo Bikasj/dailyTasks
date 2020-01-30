@@ -1,0 +1,23 @@
+<?php
+$n=10;
+$flag=0;
+for($i=2;$i<=$n;$i++)
+	{
+		for($j=2;$j<$i;$j++)
+			{
+				if($i%$j==0)
+					{
+						$flag=1;
+						break;
+					}
+				else
+					{
+					$flag=0;
+					}
+			}
+		if($flag==0)
+		{
+		echo $i;
+		}
+	}
+?>

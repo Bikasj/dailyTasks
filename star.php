@@ -12,11 +12,11 @@ for($i=0;$i<$n;$i++)
 {
 		for($j=0;$j<$g;$j++ )
 		{
-			echo" ";
+			echo"&nbsp&nbsp";
 		}
 		for($j=0;$j<=$i;$j++)
 		{
-			echo "*&nbsp;";
+			echo "*&nbsp&nbsp";
 		}
 		echo "<br>";
 		$g--;
