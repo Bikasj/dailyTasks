@@ -1,14 +1,28 @@
 <?php 
-abstract class A{
-abstract function method1();
-
+interface first{
+	public function method1();
+	public function method2();
 }
-class B extends A{
+abstract class A{
+abstract function method3();
+}
+class B extends A implements first{
+	
 	function method1(){
-		echo "Abstract method is called.";
+		echo "Interface method is called.\n";
+		
+	}
+	function method2(){
+		echo "Interface method is called.\n";
+		
+	}
+	function method3(){
+		echo "Abstract method is called.\n";
 						}
 }
-$obj2=new B();
-$obj2->method1();
+$obj=new B();
+$obj->method1();
+$obj->method2();
+$obj->method3();
 
 ?>
