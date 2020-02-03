@@ -1,0 +1,72 @@
+<html>
+<head>
+	<script>
+		
+		function d(val){
+			document.getElementById('result').value+=val;
+		}
+		function solve(){
+			var value1= document.getElementById('result').value;
+			let res = eval(value1);
+			document.getElementById('result').value=res;	
+		}
+		function cleard(){
+		document.getElementById('result').value="";
+		}
+			
+	</script>
+
+	<style type="text/css">
+		
+		input[type="button"]{
+			border:none;
+			width:100%;
+			height:100%;
+			outline: none;
+		}
+		#wrap
+		{	
+			
+		}
+	</style>
+</head>
+<body><center>
+	<div id='wrap'>
+	<table border="2" height="50%" width="15%" style="background-color:gray">
+		<tr>
+			<td colspan="3"><textarea rows="3" style="resize:none;" cols="50" id="result" readonly>
+</textarea>
+		</td>
+			<td><input type="button" value="C" style="color:white;background-color: black;" onClick="cleard()"></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="1" onClick="d('1')"></td>
+			<td><input type="button" value="2" onClick="d('2')"></td>
+			<td><input type="button" value="3" onClick="d('3')"></td>
+			<td ><input type="button" value="+" style="color:white;padding:15px;background-color: black;" 
+				onClick="d('+')"></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="4" onClick="d('4')"></td>
+			<td><input type="button" value="5" onClick="d('5')"></td>
+			<td><input type="button" value="6" onClick="d('6')"></td>
+			<td ><input type="button" value="-" style="color:white;padding:15px;background-color: black;"  onClick="d('-')"></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="7" onClick="d('7')"></td>
+			<td><input type="button" value="8" onClick="d('8')"></td>
+			<td><input type="button" value="9" onClick="d('9')"></td>
+			<td ><input type="button" value="/" style="color:white;padding:15px;background-color: black;" onClick="d('/')"></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="*" onClick="d('*')"></td>
+			<td><input type="button" value="0" onClick="d('0')"></td>
+			<td><input type="button" value="." onClick="d('.')"></td>
+			<td ><input type="button" value="=" style="color:white;padding:15px;background-color: black;" onClick="solve()"></td>
+		</tr>
+	</table>
+	</div>
+</center>
+</body>
+</html>
+
