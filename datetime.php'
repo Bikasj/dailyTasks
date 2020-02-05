@@ -1,0 +1,67 @@
+<?php
+Class dt{
+	public function getdate()
+	{
+	echo date("Y-m-d")."\n";
+	}
+	public function gettime()
+	{
+	echo date("h:i:s:a")."\n";
+	}
+	public function getDayName()
+	{   
+		echo "Today's Day is ".date("l")."\n";
+	}
+	public function CurrentDayName()
+	{
+		echo date("D,j")."\n";
+	}
+	public function CurrentMonthName()
+	{
+		echo date("M,n")."\n";
+	}
+	public function CurrentYear()
+	{
+		echo date("Y")."\n";
+	}
+	public function tendaysearlier()
+	{
+		echo date("Y-M-d",(strtotime("-10 days")))."\n";
+	}
+	public function tendaysearlierday()
+	{
+		echo date("l",(strtotime("-10 days")))."\n";
+	}
+	public function tendaysearlierdaynumber()
+	{
+		echo date("j",(strtotime("-10 days")))."\n";
+	}
+	public function fourmonthsearlier()
+	{
+		echo date("Y-M-d",(strtotime("-4 months")))."\n";
+	}
+	public function timezone()
+	{
+		echo "The default timezone is set in ".date_default_timezone_get()." is ".date("h:i:s:a")."\n";
+		date_default_timezone_set("Asia/Calcutta");
+		echo "The  timezone in India ".date_default_timezone_get()." is ".date("h:i:s:a")."\n";
+	}
+	public function mktime(){
+	echo mktime(12,12,13,10,12,1998);
+	}
+}
+$obj=new dt;
+$obj->getdate();
+$obj->gettime();
+$obj->getDayName();
+$obj->CurrentDayName();
+$obj->CurrentMonthName();
+$obj->CurrentYear();
+$obj->tendaysearlier();
+$obj->tendaysearlierday();
+$obj->tendaysearlierdaynumber();
+$obj->fourmonthsearlier();
+$obj->timezone();
+$obj->mktime();
+echo date("r");
+?>
