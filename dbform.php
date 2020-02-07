@@ -23,6 +23,15 @@ Bloodgroup : <select name="bloodgroup">
 </form>
 
 <?php
+/*
+$arr = [];
+for($i = 0;$i < 2;$i++){
+$image_name = time();
+$arr[] = $image_name;
+	
+}
+
+echo "<pre>";print_r($arr);die;*/
 error_reporting(E_ALL);	
 if(isset($_POST['submit']))
 {
@@ -40,35 +49,47 @@ if(isset($_POST['submit']))
 			{	
 				 mkdir("/var/www/html/learning/images");
 			 }
-			 echo "<pre>";
-			 print_r($_FILES);
-			die;
-	
+			 //echo "<pre>";
+			 //print_r($_FILES);
+				
+	$arr=[];
 if (($_FILES['image']['name']!=""))
 		{
-			print_r($_FILES);
-			die;
-		 $temp=strtotime("now");
+		$count=count($_FILES['image']['name']);
+		//echo $count;
+		
+			//print_r($_FILES);
 		 $target_dir = "images/";
-		 $file = $_FILES['image']['name'];
+		 
+	for($i = 0;$i < $count;$i++){
+
+		 
+		 $temp=strtotime("now");
+		 $file = $_FILES['image']['name'][$i];
 		 $path = pathinfo($file);
 		 $filename = $path['filename'];
 		 $ext = $path['extension'];
-		 $temp_name = $_FILES['image']['tmp_name'];
+		 $temp_name = $_FILES['image']['tmp_name'][$i];
 		 $img_name=$filename.$temp.".".$ext;
 		 $path_filename_ext = $target_dir.$img_name;
+		 
+	//$image_name = time();
 		if (file_exists($path_filename_ext)) 
 			{
 			 echo "Sorry, file already exists.";
 			 }
-		 	else
+		 else
 			 {
 			 move_uploaded_file($temp_name,$path_filename_ext);
 			 echo "Congratulations! File Uploaded Successfully.";
 			 }
-
+			$arr[] = $img_name;
+	}
 }
+print_r($arr);
 
+		$img_name=implode(",",$arr);
+		//echo $image_name;
 
 	$conn=mysqli_connect($servername,$username,$password,$dbname);
 	
@@ -95,16 +116,32 @@ mysqli_select_db($dbname, $conn);
 	if(mysqli_query($conn,$sql3))
 	{	
 		echo "Inserted successfully.";
-			//header('Location :'.$url);
-
+		//header('Location :'.$url);
+			
+			$count=2;
+		$j=0;
 		$sql4="select * from form_data";
 		$result=mysqli_query($conn,$sql4);
 		while($row=mysqli_fetch_assoc($result))
 		{
+			
+			if(count($row['Image'])>1)
+			{
+				   $arr2[]=explode(",",$row['Image']);
+				   while($count>$j)
+				   {
+					   echo "<div><img src='images/".$arr2[$j++]."' height='110px' width='160px'></div>";
+				   }
+			}
+			else
+		{
+			
+			
 			echo "<div><img src='images/".$row['Image']."' height='110px' width='160px'></div>";
 		}
 		
 	}
+}
 	else
 	{
 		echo "Error in inserting.".mysqli_error($conn);
